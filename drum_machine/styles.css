@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap');
+
+:root {
+  --panel: #1b1e22;
+  --panel-light: #262a2f;
+  --pad: #14171a;
+  --pad-hover: #1c2024;
+  --accent: #3fd6c0;
+  --accent-dim: #1f6e63;
+  --screen: #0a0c0d;
+  --ink: #cfd3d6;
+  --ink-dim: #676c71;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0e0f11;
+  background-image: radial-gradient(circle at 50% -10%, #23262b 0%, #0e0f11 65%);
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink);
+  padding: 24px;
+}
+
+#drum-machine {
+  width: 420px;
+  max-width: 100%;
+  padding: 22px 22px 26px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--panel-light), var(--panel));
+  border: 1px solid #101214;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 24px 48px rgba(0, 0, 0, 0.55);
+}
+
+.brand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2px 4px 16px;
+  border-bottom: 1px solid #101214;
+  margin-bottom: 16px;
+}
+
+.brand-name {
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+}
+
+.brand-tag {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+}
+
+#pad-bank {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #0f1113;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) inset;
+}
+
+.drum-pad {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(160deg, var(--pad-hover), var(--pad));
+  color: var(--ink-dim);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 8px 10px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 2px 5px rgba(0, 0, 0, 0.5),
+    0 0 0 1px #0a0b0c;
+  transition: color 0.12s ease, box-shadow 0.12s ease, transform 0.05s ease;
+}
+
+.drum-pad:hover {
+  color: var(--ink);
+}
+
+.drum-pad.playing {
+  color: var(--accent);
+  transform: translateY(1px);
+  box-shadow:
+    0 0 0 1px var(--accent-dim),
+    0 0 14px rgba(63, 214, 192, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.6) inset;
+}
+
+#display {
+  margin: 16px 4px 0;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 6px;
+  background: var(--screen);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) inset, 0 0 0 1px #000;
+  text-shadow: 0 0 6px rgba(63, 214, 192, 0.6);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 14px 4px 0;
+}
+
+#volume {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#volume .icon {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+}
+
+#volume input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--fill, 80%), #0f1113 var(--fill, 80%));
+  outline: none;
+}
+
+#volume input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #d9d6d0;
+  box-shadow: 0 0 0 2px #0a0b0c, 0 1px 3px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+#volume input[type="range"]::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border: none;
+  border-radius: 50%;
+  background: #d9d6d0;
+  box-shadow: 0 0 0 2px #0a0b0c, 0 1px 3px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+#powerBtn button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
+  background: radial-gradient(circle at 35% 30%, #2b2f34, #16181b 70%);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.6),
+    0 0 0 3px #0d0f11,
+    0 0 0 4px #303439;
+  text-transform: uppercase;
+  transition: color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#powerBtn button.on {
+  color: var(--accent);
+  box-shadow:
+    0 0 8px rgba(63, 214, 192, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.6),
+    0 0 0 3px #0d0f11,
+    0 0 0 4px #303439;
+}
+
+/* powered-off state dims the pads and display, and blocks interaction */
+#drum-machine.is-off #pad-bank {
+  filter: grayscale(1) brightness(0.4);
+  pointer-events: none;
+}
+
+#drum-machine.is-off #display {
+  opacity: 0.25;
+}
+
+@media (max-width: 460px) {
+  #drum-machine { padding: 18px 14px 20px; }
+  .drum-pad { font-size: 14px; }
+}
