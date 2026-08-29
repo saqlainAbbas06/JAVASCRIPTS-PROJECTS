@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bank Account</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="card">
+  <h1>My Bank Account</h1>
+  <div class="balance" id="balanceDisplay">$0</div>
+
+  <div class="input-row">
+    <input type="number" id="amountInput" placeholder="Enter amount" min="0" step="0.01">
+  </div>
+
+  <div class="btn-row">
+    <button class="deposit-btn" onclick="handleDeposit()">Deposit</button>
+    <button class="withdraw-btn" onclick="handleWithdraw()">Withdraw</button>
+  </div>
+
+  <div class="message" id="messageBox"></div>
+
+  <div class="section-title">Latest Deposit</div>
+  <div class="list-box" id="depositsList"></div>
+
+  <div class="section-title">Latest Withdrawal</div>
+  <div class="list-box" id="withdrawalsList"></div>
+
+  <button class="history-btn" onclick="toggleHistory(event)">Show Transaction History</button>
+  <div class="list-box" id="historyList" style="display:none;"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
